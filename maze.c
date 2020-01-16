@@ -79,11 +79,11 @@ __attribute__ ((always_inline)) static void draw_column_textured(void *plane_lig
 	if(height < 32){
 		while(screen_pos < stop_height){
 			if(column_data_light&texture_pos){
-				screen_column_light[0] = screen_column_light[0] | mask;
-				screen_column_light[30] = screen_column_light[30] | mask;
+				screen_column_light[0] |= mask;
+				screen_column_light[30] |= mask;
 			} else {
-				screen_column_light[0] = screen_column_light[0] & ~mask;
-				screen_column_light[30] = screen_column_light[30] & ~mask;
+				screen_column_light[0] &= ~mask;
+				screen_column_light[30] &= ~mask;
 			}
 			if(column_data_dark&texture_pos){
 				screen_column_dark[0] = screen_column_dark[0] | mask;
@@ -1024,6 +1024,7 @@ void _main(){
 	gray_buffer = malloc(GRAYDBUFFER_SIZE);
 	if(!gray_buffer){
 		printf("Not enough memory!\n");
+		ngetchx();
 		exit(1);
 	}
 	kbq = kbd_queue();
