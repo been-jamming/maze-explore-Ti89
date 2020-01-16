@@ -86,11 +86,11 @@ __attribute__ ((always_inline)) static void draw_column_textured(void *plane_lig
 				screen_column_light[30] &= ~mask;
 			}
 			if(column_data_dark&texture_pos){
-				screen_column_dark[0] = screen_column_dark[0] | mask;
-				screen_column_dark[30] = screen_column_dark[30] | mask;
+				screen_column_dark[0] |= mask;
+				screen_column_dark[30] |= mask;
 			} else {
-				screen_column_dark[0] = screen_column_dark[0] & ~mask;
-				screen_column_dark[30] = screen_column_dark[30] & ~mask;
+				screen_column_dark[0] &= ~mask;
+				screen_column_dark[30] &= ~mask;
 			}
 			n += 16;
 			while(n >= height){
