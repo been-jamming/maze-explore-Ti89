@@ -1035,9 +1035,9 @@ void _main(){
 	GrayDBufInit(gray_buffer);
 
 	prepare_maze();
-	generate_maze(2, 2);
-	camera_x = 160;
-	camera_y = 160;
+	generate_maze(rand()%15 + 1, rand()%15 + 1);
+	camera_x = (rand()%15 + 1)*128 + 32;
+	camera_y = (rand()%15 + 1)*128 + 32;
 	plane_direction_x = 0;
 	plane_direction_y = -256;
 	camera_direction_x = 256;
